@@ -10,8 +10,8 @@ quitIfWebGPUNotAvailable(adapter, device);
 const context = canvas.getContext('webgpu') as GPUCanvasContext;
 
 const devicePixelRatio = window.devicePixelRatio;
-canvas.width = canvas.clientWidth * devicePixelRatio;
-canvas.height = canvas.clientHeight * devicePixelRatio;
+canvas.width = 1000; // 幅を800ピクセルに設定
+canvas.height = 1000; // 高さを600ピクセルに設定
 const presentationFormat = navigator.gpu.getPreferredCanvasFormat();
 
 context.configure({
@@ -59,7 +59,7 @@ function frame() {
 
   const passEncoder = commandEncoder.beginRenderPass(renderPassDescriptor);
   passEncoder.setPipeline(pipeline);
-  passEncoder.draw(3);
+  passEncoder.draw(6);
   passEncoder.end();
 
   device.queue.submit([commandEncoder.finish()]);
